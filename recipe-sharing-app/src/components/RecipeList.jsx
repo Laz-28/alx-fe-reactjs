@@ -1,5 +1,5 @@
 // FIX: Changed '../recipeStore' to '../recipeStore.js'
-import { useRecipeStore } from '../recipeStore.js';
+import { useRecipeStore } from './recipeStore.js';
 
 const RecipeList = () => {
   const recipes = useRecipeStore((state) => state.recipes);
