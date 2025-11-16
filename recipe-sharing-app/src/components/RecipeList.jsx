@@ -1,6 +1,5 @@
-// Note: Corrected import path from './recipeStore' to '../recipeStore'
-// to properly locate the file from the components/ directory.
-import { useRecipeStore } from '../recipeStore';
+// FIX: Changed '../recipeStore' to '../recipeStore.js'
+import { useRecipeStore } from '../recipeStore.js';
 
 const RecipeList = () => {
   const recipes = useRecipeStore((state) => state.recipes);
