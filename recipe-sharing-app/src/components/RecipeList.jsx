@@ -1,4 +1,4 @@
-import { useRecipeStore } from '../recipeStore.js';
+import { useRecipeStore } from './recipeStore.js';
 // 1. Import Link from react-router-dom
 import { Link } from 'react-router-dom';
 
