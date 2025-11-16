@@ -1,5 +1,6 @@
-// FIX: Changed '../recipeStore' to '../recipeStore.js'
-import { useRecipeStore } from './recipeStore.js';
+import { useRecipeStore } from '../recipeStore.js';
+// 1. Import Link from react-router-dom
+import { Link } from 'react-router-dom';
 
 const RecipeList = () => {
   const recipes = useRecipeStore((state) => state.recipes);
@@ -15,7 +16,10 @@ const RecipeList = () => {
             key={recipe.id}
             style={{ border: '1px solid #ccc', margin: '10px', padding: '10px' }}
           >
-            <h3>{recipe.title}</h3>
+            {/* 2. Wrap the title in a Link component */}
+            <h3>
+              <Link to={`/recipe/${recipe.id}`}>{recipe.title}</Link>
+            </h3>
             <p>{recipe.description}</p>
           </div>
         ))
