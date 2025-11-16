@@ -3,11 +3,11 @@ import { useParams, Link } from 'react-router-dom';
 import { useRecipeStore } from './recipeStore.js';
 import EditRecipeForm from './EditRecipeForm';
 import DeleteRecipeButton from './DeleteRecipeButton';
+import FavoriteButton from './FavoriteButton'; // 1. Import
 
 const RecipeDetails = () => {
-  const { recipeId } = useParams(); // Gets the ID from the URL
+  const { recipeId } = useParams();
   const recipe = useRecipeStore((state) =>
-    // Find the recipe. Note: useParams returns a string, so we convert ID to Number
     state.recipes.find((r) => r.id === Number(recipeId))
   );
 
@@ -25,17 +25,16 @@ const RecipeDetails = () => {
   return (
     <div>
       <Link to="/">{'<'} Back to Home</Link>
-      
+
       {isEditing ? (
-        // Show edit form if we are editing
         <EditRecipeForm recipe={recipe} onCancel={() => setIsEditing(false)} />
       ) : (
-        // Otherwise, show recipe details
         <div>
           <h1>{recipe.title}</h1>
           <p>{recipe.description}</p>
           <button onClick={() => setIsEditing(true)}>Edit Recipe</button>
           <DeleteRecipeButton recipeId={recipe.id} />
+          <FavoriteButton recipeId={recipe.id} /> {/* 2. Add button */}
         </div>
       )}
     </div>

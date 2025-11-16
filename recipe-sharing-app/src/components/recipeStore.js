@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 
 export const useRecipeStore = create((set) => ({
-  // --- Existing State ---
+  // --- Existing Recipe State ---
   recipes: [],
   addRecipe: (newRecipe) =>
     set((state) => ({ recipes: [...state.recipes, newRecipe] })),
@@ -17,19 +17,50 @@ export const useRecipeStore = create((set) => ({
     })),
   setRecipes: (recipes) => set({ recipes }),
 
-  // --- New State for Search/Filtering ---
+  // --- Existing Search State ---
   searchTerm: '',
-  filteredRecipes: [], // This will hold the recipes to be displayed
-  
-  // Action to update the search term
+  filteredRecipes: [],
   setSearchTerm: (term) => set({ searchTerm: term }),
-
-  // Action to compute the filtered list
-  // It filters 'recipes' based on 'searchTerm' and stores it in 'filteredRecipes'
   filterRecipes: () =>
     set((state) => ({
       filteredRecipes: state.recipes.filter((recipe) =>
         recipe.title.toLowerCase().includes(state.searchTerm.toLowerCase())
       ),
     })),
+
+  // --- New Favorites & Recommendations State ---
+  favorites: [], // Will store an array of recipe IDs
+  recommendations: [],
+
+  /**
+   * Adds a recipe ID to the favorites array.
+   */
+  addFavorite: (recipeId) =>
+    set((state) => ({
+      // Avoid duplicates
+      favorites: state.favorites.includes(recipeId)
+        ? state.favorites
+        : [...state.favorites, recipeId],
+    })),
+
+  /**
+   * Removes a recipe ID from the favorites array.
+   */
+  removeFavorite: (recipeId) =>
+    set((state) => ({
+      favorites: state.favorites.filter((id) => id !== recipeId),
+    })),
+
+  /**
+   * Generates a mock list of recommendations.
+   * This mock implementation recommends a random subset of the user's favorites.
+   * A real-world app would use a more complex algorithm.
+   */
+  generateRecommendations: () =>
+    set((state) => {
+      const recommended = state.recipes.filter(
+        (recipe) => state.favorites.includes(recipe.id) && Math.random() > 0.5
+      );
+      return { recommendations: recommended };
+    }),
 }));
