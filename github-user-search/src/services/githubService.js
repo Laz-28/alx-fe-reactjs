@@ -11,7 +11,7 @@ export const fetchUserData = async (username) => {
   
   const config = {
     headers: {
-      'Accept': 'application/vnd.github.v3+json'
+      // 'Accept': 'application/vnd.github.v3+json' // Optional, but good practice
     }
   };
 
@@ -20,13 +20,16 @@ export const fetchUserData = async (username) => {
   }
 
   try {
+    // UPDATED: Using the specific /users endpoint as required by the prompt
+    // This returns a single user object, not a search result list.
     const response = await axios.get(
-      `${GITHUB_BASE_URL}/search/users?q=${encodeURIComponent(username)}&per_page=30`,
+      `${GITHUB_BASE_URL}/users/${username}`,
       config
     );
     return response.data;
   } catch (error) {
     console.error("Error fetching GitHub users:", error);
-    throw new Error(error.response?.data?.message || error.message);
+    // Keep the error simple or pass specific messages if needed
+    throw error;
   }
 };
