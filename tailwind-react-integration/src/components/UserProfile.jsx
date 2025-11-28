@@ -5,20 +5,24 @@ function UserProfile() {
     
     <div className="bg-gray-100 mx-auto my-20 rounded-lg shadow-lg text-center 
                     sm:p-4 sm:max-w-xs 
-                    md:p-8 md:max-w-sm">
+                    md:p-8 md:max-w-sm 
+                    hover:shadow-xl transition-shadow duration-300">
+      
       
       <img 
         src="https://via.placeholder.com/150" 
         alt="User" 
         className="rounded-full mx-auto 
                    sm:w-24 sm:h-24 
-                   md:w-36 md:h-36"
+                   md:w-36 md:h-36 
+                   hover:scale-110 transition-transform duration-300 ease-in-out"
       />
       
-      
+     
       <h1 className="text-blue-800 my-4 
                      sm:text-lg 
-                     md:text-xl">
+                     md:text-xl 
+                     hover:text-blue-500 transition-colors duration-300">
         John Doe
       </h1>
       
