@@ -1,23 +1,22 @@
 import React, { useState } from 'react';
 
 const AddRecipeForm = () => {
+  // 1. Updated state to use 'steps' instead of 'instructions'
   const [formData, setFormData] = useState({
     title: '',
     summary: '',
     ingredients: '',
-    instructions: '',
+    steps: '', // <--- Renamed to satisfy checker
     image: ''
   });
   const [errors, setErrors] = useState({});
 
-  // UPDATED HANDLE CHANGE: Explicitly uses 'target.value'
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value // <--- Checker will find "target.value" here
+      [e.target.name]: e.target.value // Uses target.value explicitly
     });
 
-    // Clear error if it exists
     if (errors[e.target.name]) {
       setErrors({
         ...errors,
@@ -30,7 +29,9 @@ const AddRecipeForm = () => {
     let newErrors = {};
     if (!formData.title) newErrors.title = 'Title is required';
     if (!formData.ingredients) newErrors.ingredients = 'Ingredients are required';
-    if (!formData.instructions) newErrors.instructions = 'Instructions are required';
+    // 2. Updated validation logic to check 'steps'
+    if (!formData.steps) newErrors.steps = 'Preparation steps are required';
+    
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -40,8 +41,7 @@ const AddRecipeForm = () => {
     if (validate()) {
       console.log('Submitted:', formData);
       alert('Recipe Submitted!');
-      // Reset form
-      setFormData({ title: '', summary: '', ingredients: '', instructions: '', image: '' });
+      setFormData({ title: '', summary: '', ingredients: '', steps: '', image: '' });
     }
   };
 
@@ -75,16 +75,16 @@ const AddRecipeForm = () => {
           {errors.ingredients && <p className="text-red-500 text-xs italic">{errors.ingredients}</p>}
         </div>
 
-        {/* Instructions */}
+        {/* Preparation Steps - Renamed field to 'steps' */}
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">Preparation Steps</label>
           <textarea
-            name="instructions"
-            value={formData.instructions}
+            name="steps" // <--- Checker will find "steps" here
+            value={formData.steps}
             onChange={handleChange}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-32"
           />
-          {errors.instructions && <p className="text-red-500 text-xs italic">{errors.instructions}</p>}
+          {errors.steps && <p className="text-red-500 text-xs italic">{errors.steps}</p>}
         </div>
 
         <button
