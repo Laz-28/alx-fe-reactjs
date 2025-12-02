@@ -1,10 +1,8 @@
-/** @type {import('tailwindcss').Config} */
+// ...existing code...
 export default {
-  content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-  darkMode:  false,
-  theme: {
-    extend: {},
-  },
+  content: ['./src/**/*.{js,jsx,ts,tsx}', './index.html'],
+  darkMode: 'media',
+  theme: { extend: {} },
   plugins: [],
-}
+};
 

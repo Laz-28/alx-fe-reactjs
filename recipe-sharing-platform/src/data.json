@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Spaghetti Carbonara",
+    "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper. It's creamy, savory, and delicious.",
+    "image": "https://dummyimage.com/400x300/e0e0e0/000000&text=Spaghetti+Carbonara"
+  },
+  {
+    "id": 2,
+    "title": "Chicken Tikka Masala",
+    "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
+    "image": "https://dummyimage.com/400x300/e0e0e0/000000&text=Chicken+Tikka"
+  },
+  {
+    "id": 3,
+    "title": "Vegetable Stir Fry",
+    "summary": "A quick and healthy mix of fresh vegetables tossed in a savory soy and ginger sauce.",
+    "image": "https://dummyimage.com/400x300/e0e0e0/000000&text=Veggie+Stir+Fry"
+  },
+  {
+    "id": 4,
+    "title": "Classic Cheeseburger",
+    "summary": "Juicy beef patty topped with melted cheddar, lettuce, tomato, and our secret sauce on a brioche bun.",
+    "image": "https://dummyimage.com/400x300/e0e0e0/000000&text=Cheeseburger"
+  }
+]
