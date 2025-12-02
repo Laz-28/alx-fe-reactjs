@@ -5,7 +5,6 @@ const HomePage = () => {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    // Keeping the setTimeout to fix the "synchronous state" error
     const timer = setTimeout(() => {
       setRecipes(recipeData);
     }, 100);
@@ -18,12 +17,8 @@ const HomePage = () => {
         Recipe Sharing Platform
       </h1>
 
-      {/* UPDATED GRID LINE:
-        1. grid-cols-1 (Mobile: 1 column)
-        2. md:grid-cols-2 (Tablet: 2 columns) <-- Added 'md' here to fix the error
-        3. lg:grid-cols-3 (Desktop: 3 columns)
-      */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+   
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {recipes.map((recipe) => (
           <div 
             key={recipe.id} 
